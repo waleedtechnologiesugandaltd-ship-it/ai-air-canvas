@@ -2,9 +2,9 @@
 
 AI Air Canvas is a Python computer vision project in development. Its goal is to let users draw in the air by tracking hand gestures through a webcam.
 
-> **Development status:** The capabilities and usage below are planned and may not be available in the current project yet.
+> **Development status:** AI Air Canvas is under development; some planned capabilities may not yet be available.
 
-## Planned capabilities
+## Capabilities
 
 - Capture a live webcam feed at 1280 × 720 and display it mirrored.
 - Track one hand using the MediaPipe Tasks Hand Landmarker.
@@ -13,8 +13,8 @@ AI Air Canvas is a Python computer vision project in development. Its goal is to
   - **Drawing Mode:** raise only the index finger.
 - Provide a toolbar with Blue, Green, Red, Eraser, and Clear All options.
 - Draw smoothly on a separate canvas and blend it with the webcam feed.
-- Save a drawing as a PNG when `S` is pressed.
-- Quit the application when `Q` is pressed.
+- Save the drawing to `drawings/` as a transparent PNG when `S` or `s` is pressed.
+- Quit the application when `Q` or `q` is pressed.
 
 ## Technology
 
@@ -26,8 +26,8 @@ AI Air Canvas is a Python computer vision project in development. Its goal is to
 ## Requirements
 
 - Python and pip installed.
-- A working webcam is required for the planned live camera experience.
-- MediaPipe Tasks Hand Landmarker requires a compatible model asset. Model sourcing and setup instructions have not yet been finalized; this README does not provide a download URL.
+- A working webcam is required to use the application.
+- Before launching, download the [official Google MediaPipe Hand Landmarker model](https://storage.googleapis.com/mediapipe-models/hand_landmarker/hand_landmarker/float16/1/hand_landmarker.task) and save it as `models/hand_landmarker.task` in the project root. Create the `models` folder if it does not exist. The application does not download the model automatically. The `/models/` folder is excluded by `.gitignore`; do not commit the model binary.
 
 ## Installation
 
@@ -38,35 +38,33 @@ AI Air Canvas is a Python computer vision project in development. Its goal is to
    cd ai-air-canvas
    ```
 
-2. Create a virtual environment:
+2. Create a virtual environment. This bootstrap step uses your installed Python because the virtual environment does not exist yet:
 
    ```powershell
    python -m venv .venv
    ```
 
-3. Install the project dependencies:
-
-   You can run the virtual environment's Python executable directly without activating the environment:
+3. Install the project dependencies using the virtual environment's Python:
 
    ```powershell
    .\.venv\Scripts\python.exe -m pip install -r requirements.txt
    ```
 
-## Planned usage
+## Usage
 
-Once the application entry point is implemented, the intended command is:
+Run the application with the virtual environment's Python:
 
 ```powershell
-python air_canvas.py
+.\.venv\Scripts\python.exe .\air_canvas.py
 ```
 
-Planned keyboard controls:
+Keyboard controls:
 
 | Key | Action |
 | --- | --- |
-| `S` | Save the current drawing as a PNG |
-| `Q` | Quit the application |
+| `S` or `s` | Save the current drawing as a transparent PNG in `drawings/` |
+| `Q` or `q` | Quit the application |
 
 ## Development
 
-The application is under active development. Features, model setup, and runtime behavior will be documented as they are implemented and verified.
+The application is under active development. Additional features and runtime behavior will be documented as they are implemented and verified.
